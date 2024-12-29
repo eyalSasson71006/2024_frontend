@@ -1,0 +1,36 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    color: #756452;
+}
+
+.navBar_title {
+    font-size: 3rem;
+}
+
+.navBar_stats {
+    display: flex;
+    gap: 1rem;
+}
+
+.navBar_stats div {
+    font-size: 1.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #756452;
+    text-align: center;
+}
+
+.navBar_stats p:nth-child(2) {
+    font-weight: bold;
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    background-color: #756452;
+    color: #FAF8F0;
+}
