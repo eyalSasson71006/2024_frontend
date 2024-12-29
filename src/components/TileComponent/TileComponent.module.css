@@ -1,0 +1,19 @@
+.tileComponent {
+    width: 90%;
+    height: 90%;
+    background-color: #BDAC97;
+    margin: auto;
+    border-radius: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.occupied{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    background-color: #EEE4DA;
+    color: #756452;
+    font-size: 3rem;
+}
