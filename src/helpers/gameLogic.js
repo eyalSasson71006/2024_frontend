@@ -119,3 +119,23 @@ export function addRandomTile(grid) {
     }
     return newGrid;
 }
+
+export function checkWin(grid) {
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            if (grid[i][j] == 2048) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+export function checkLose(grid) {
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            if (grid[i][j] == 0) return false;
+        }
+    }
+    return true;
+}

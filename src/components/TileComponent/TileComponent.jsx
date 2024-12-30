@@ -17,16 +17,18 @@ export default function TileComponent({ value }) {
 		2048: ["#edc22e", "#f9f6f2"],
 	};
 	return (
-		<div
-			className={`${styles.tileComponent} ${
-				value > 0 && styles.occupied
-			}`}
-			style={{
-				backgroundColor: colorTable[value][0],
-				color: colorTable[value][1],
-			}}
-		>
-			{value > 0 && value}
+		<div className={styles.tileComponent}>
+			{value > 0 && (
+				<div
+					className={`${styles.tileComponent} ${styles.occupied}`}
+					style={{
+						backgroundColor: colorTable[value][0],
+						color: colorTable[value][1],
+					}}
+				>
+					{value}
+				</div>
+			)}
 		</div>
 	);
 }
