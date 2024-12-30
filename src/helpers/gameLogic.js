@@ -1,6 +1,6 @@
 
 export function moveLeft(grid) {
-    let newGrid = [...grid];
+    let newGrid = JSON.parse(JSON.stringify(grid));
     let isChanged = false;
     for (let i = 0; i < newGrid.length; i++) {
         let a = 0;
@@ -27,7 +27,7 @@ export function moveLeft(grid) {
 }
 
 export function moveRight(grid) {
-    let newGrid = [...grid];
+    let newGrid = JSON.parse(JSON.stringify(grid));
     let isChanged = false;
     for (let i = 0; i < newGrid.length; i++) {
         let a = newGrid[i].length - 1;
@@ -54,7 +54,7 @@ export function moveRight(grid) {
 }
 
 export function moveDown(grid) {
-    let newGrid = [...grid];
+    let newGrid = JSON.parse(JSON.stringify(grid));
     let isChanged = false;
     for (let i = 0; i < newGrid[0].length; i++) {
         let a = newGrid.length - 1;
@@ -81,7 +81,7 @@ export function moveDown(grid) {
 }
 
 export function moveUp(grid) {
-    let newGrid = [...grid];
+    let newGrid = JSON.parse(JSON.stringify(grid));
     let isChanged = false;
     for (let i = 0; i < newGrid[0].length; i++) {
         let a = 0;
@@ -108,24 +108,25 @@ export function moveUp(grid) {
 }
 
 export function addRandomTile(grid) {
-    let newGrid = [...grid];
-    let randRow = Math.floor(Math.random() * grid.length);
-    let randCol = Math.floor(Math.random() * grid[0].length);
-    if (newGrid[randRow][randCol] == 0) {
-        let rand = Math.ceil(Math.random() * 2);
-        newGrid[randRow][randCol] = 2 * rand;
-    } else {
-        addRandomTile(newGrid);
+    const emptyTiles = [];
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            if (grid[i][j] === 0) emptyTiles.push({ row: i, col: j });
+        }
     }
+    if (emptyTiles.length === 0) return grid;
+
+    const { row, col } = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
+    const newGrid = JSON.parse(JSON.stringify(grid));
+    newGrid[row][col] = Math.random() > 0.5 ? 2 : 4;
     return newGrid;
 }
 
+
 export function checkWin(grid) {
     for (let i = 0; i < grid.length; i++) {
-        for (let j = 0; j < grid[0].length; j++) {
-            if (grid[i][j] == 2048) {
-                return true;
-            }
+        if (grid[i].includes(2048)) {
+            return true;
         }
     }
     return false;
