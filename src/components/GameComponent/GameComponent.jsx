@@ -9,14 +9,7 @@ import {
 	addRandomTile,
 } from "../../helpers/gameLogic";
 
-export default function GameComponent() {
-	const [grid, setGrid] = useState([
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-	]);
-
+export default function GameComponent({grid, setGrid}) {
 	useEffect(() => {
 		setGrid((grid) => addRandomTile(grid));
 		setGrid((grid) => addRandomTile(grid));
