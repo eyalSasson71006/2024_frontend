@@ -134,7 +134,11 @@ export function checkWin(grid) {
 export function checkLose(grid) {
     for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid[0].length; j++) {
-            if (grid[i][j] == 0) return false;
+            if (
+                grid[i][j] == 0 ||
+                (grid[i][j + 1] && grid[i][j] == grid[i][j + 1]) ||
+                (grid[i + 1] && grid[i][j] == grid[i + 1][j])
+            ) return false;
         }
     }
     return true;
