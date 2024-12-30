@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "./NavBar.module.css";
+import { addRandomTile } from "../../helpers/gameLogic";
 
 export default function Navbar({ grid, setGrid }) {
-	const [score, setScore] = useState(0);
-
 	function calculateScore() {
 		let sum = 0;
 		grid.forEach((row) => {
@@ -13,6 +12,20 @@ export default function Navbar({ grid, setGrid }) {
 		});
 		return sum;
 	}
+
+	function resetBoard() {
+		if (confirm("Are you sure you want to reset the board?")) {
+			setGrid([
+				[0, 0, 0, 0],
+				[0, 0, 0, 0],
+				[0, 0, 0, 0],
+				[0, 0, 0, 0],
+			]);
+			setGrid((grid) => addRandomTile(grid));
+			setGrid((grid) => addRandomTile(grid));
+		}
+	}
+
 	return (
 		<nav>
 			<h1 className={styles.navBar_title}>2024</h1>
@@ -22,7 +35,7 @@ export default function Navbar({ grid, setGrid }) {
 					<p>{calculateScore()}</p>
 				</div>
 			</div>
-			<button>New Game</button>
+			<button onClick={resetBoard}>New Game</button>
 		</nav>
 	);
 }

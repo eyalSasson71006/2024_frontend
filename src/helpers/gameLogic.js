@@ -111,7 +111,6 @@ export function addRandomTile(grid) {
     let newGrid = [...grid];
     let randRow = Math.floor(Math.random() * grid.length);
     let randCol = Math.floor(Math.random() * grid[0].length);
-    debugger;
     if (newGrid[randRow][randCol] == 0) {
         let rand = Math.ceil(Math.random() * 2);
         newGrid[randRow][randCol] = 2 * rand;
